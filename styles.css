@@ -1228,3 +1228,117 @@ input:required:focus:valid {
     font-size: 1rem;
   }
 }
+
+
+/* Popup Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    z-index: 1000;
+}
+
+/* Popup Box */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f0f23;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem;
+    z-index: 1001;
+    display: none;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.popup-header h2 {
+    color: #3a86ff;
+    margin-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.name-fields {
+    display: flex;
+    gap: 1rem;
+}
+
+.name-fields .form-group {
+    flex: 1;
+}
+
+.name-fields .form-group:nth-child(2) {
+    flex: 0.8;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #3a86ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #2667cc;
+}
+
+.toggle-form {
+    background: none;
+    border: none;
+    color: #3a86ff;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.account-btn{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}

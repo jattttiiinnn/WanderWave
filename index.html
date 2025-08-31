@@ -22,12 +22,12 @@
         <div class="menu-overlay"></div>
         <nav class="nav-container">
             <ul class="nav-links">
+                <li><button id="accountBtn" class="account-btn">Account</button></li>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="destination.html">Destinations</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="Accounts.html">Accounts</a></li>
                 <li class="mobile-only"><a href="bookings.html">My Bookings</a></li>
             </ul>
         </nav>
@@ -87,10 +87,10 @@
                     <div class="form-group">
                         <label>Passengers</label>
                         <select name="passengers">
-                            <option value="1">1 Passenger</option>
-                            <option value="2">2 Passengers</option>
-                            <option value="3">3 Passengers</option>
-                            <option value="4">4+ Passengers</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
                         </select>
                     </div>
                     <button type="submit" class="search-button">
@@ -265,6 +265,136 @@
             </div>
         </div>
     </section>
+    <!-- Popup Overlay -->
+    <div class="overlay" id="overlay">
+
+        <!-- Signup Popup -->
+        <div class="popup" id="signupPopup">
+            <div class="popup-header">
+                <h2>Create Account</h2>
+                <p>Join WanderWave to book your tickets easily</p>
+            </div>
+            <form id="signupForm">
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" id="middleName" placeholder="M.">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+1 (123) 456-7890" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Your city" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                    <p>Already have an account? <button type="button" class="toggle-form" id="showLogin">Login</button></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Login Popup -->
+        <div class="popup" id="loginPopup">
+            <div class="popup-header">
+                <h2>Welcome Back</h2>
+                <p>Login to your WanderWave account</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email or Phone Number</label>
+                    <input type="text" id="loginEmail" placeholder="john@example.com or +1 (123) 456-7890" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">Login</button>
+                    <p>Don't have an account? <button type="button" class="toggle-form" id="showSignup">Sign Up</button></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+<script>
+    // Elements
+    const accountBtn = document.getElementById('accountBtn');
+    const overlay = document.getElementById('overlay');
+    const signupPopup = document.getElementById('signupPopup');
+    const loginPopup = document.getElementById('loginPopup');
+    const showLogin = document.getElementById('showLogin');
+    const showSignup = document.getElementById('showSignup');
+
+    // Open popup on Account button
+    accountBtn.addEventListener('click', () => {
+        overlay.style.display = 'block';
+        signupPopup.style.display = 'block';
+        loginPopup.style.display = 'none';
+    });
+
+    // Close popup if overlay clicked
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.style.display = 'none';
+            signupPopup.style.display = 'none';
+            loginPopup.style.display = 'none';
+        }
+    });
+
+    // Toggle between Signup and Login
+    showLogin.addEventListener('click', () => {
+        signupPopup.style.display = 'none';
+        loginPopup.style.display = 'block';
+    });
+
+    showSignup.addEventListener('click', () => {
+        loginPopup.style.display = 'none';
+        signupPopup.style.display = 'block';
+    });
+
+    // Form submission
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Signup successful! Please login.');
+        signupPopup.style.display = 'none';
+        loginPopup.style.display = 'block';
+        this.reset();
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Login successful!');
+        overlay.style.display = 'none';
+        loginPopup.style.display = 'none';
+        this.reset();
+    });
+
+</script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -321,71 +451,6 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <!-- Auth Popup -->
-    <div class="auth-overlay">
-        <div class="auth-popup">
-            <button class="close-auth">&times;</button>
-            <div class="auth-tabs">
-                <div class="auth-tab active" id="login-tab">Login</div>
-                <div class="auth-tab" id="signup-tab">Sign Up</div>
-            </div>
-
-            <!-- Login Form -->
-            <form id="login-form" class="auth-form active">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="auth-btn">Login</button>
-                <div class="auth-footer">
-                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
-                </div>
-                <div class="social-login">
-                    <span>Or login with</span>
-                    <div class="social-buttons">
-                        <button type="button" class="social-btn">
-                            <i class="fab fa-google"></i>
-                        </button>
-                        <button type="button" class="social-btn">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button type="button" class="social-btn">
-                            <i class="fab fa-apple"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Signup Form -->
-            <form id="signup-form" class="auth-form">
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" placeholder="Create a password" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-confirm-password">Confirm Password</label>
-                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
-                </div>
-                <button type="submit" class="auth-btn">Create Account</button>
-                <div class="auth-footer">
-                    Already have an account? <a href="#" id="switch-to-login">Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
     
     
     
