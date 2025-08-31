@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - WanderWave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="destination.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">WanderWave</div>
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <label for="mobile-menu-toggle" class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </label>
+        <div class="menu-overlay"></div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html" class="active">Destinations</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-only"><a href="bookings.html">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item">
+            <i class="fas fa-home"></i>
+            <div class="dock-tooltip">Home</div>
+        </a>
+        <a href="search.html" class="dock-item">
+            <i class="fas fa-search"></i>
+            <div class="dock-tooltip">Search</div>
+        </a>
+        <a href="bookings.html" class="dock-item">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="dock-tooltip">My Bookings</div>
+        </a>
+        <a href="destinations.html" class="dock-item active">
+            <i class="fas fa-map-marked-alt"></i>
+            <div class="dock-tooltip">Destinations</div>
+        </a>
+        <a href="profile.html" class="dock-item">
+            <i class="fas fa-user"></i>
+            <div class="dock-tooltip">Profile</div>
+        </a>
+        <a href="contact.html" class="dock-item">
+            <i class="fas fa-headset"></i>
+            <div class="dock-tooltip">Support</div>
+        </a>
+    </div>
+
+    <!-- Destinations Hero Section -->
+    <section class="destinations-hero">
+        <h1>Explore Amazing Destinations</h1>
+        <p>Discover incredible places across India with eco-friendly travel options and authentic local experiences</p>
+    </section>
+
+    <!-- Destination Filters -->
+    <div class="container">
+        <div class="destination-filters">
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-category="all">
+                    <i class="fas fa-globe"></i>
+                    All Destinations
+                </div>
+                <div class="filter-tab" data-category="beaches">
+                    <i class="fas fa-umbrella-beach"></i>
+                    Beaches
+                </div>
+                <div class="filter-tab" data-category="mountains">
+                    <i class="fas fa-mountain"></i>
+                    Mountains
+                </div>
+                <div class="filter-tab" data-category="cultural">
+                    <i class="fas fa-landmark"></i>
+                    Cultural
+                </div>
+                <div class="filter-tab" data-category="adventure">
+                    <i class="fas fa-hiking"></i>
+                    Adventure
+                </div>
+                <div class="filter-tab" data-category="spiritual">
+                    <i class="fas fa-om"></i>
+                    Spiritual
+                </div>
+            </div>
+            
+            <div class="search-filters">
+                <input type="text" class="filter-input" id="destination-search" placeholder="Search destinations...">
+                <select class="filter-input" id="budget-filter">
+                    <option value="">Any Budget</option>
+                    <option value="budget">Budget (Under ₹500)</option>
+                    <option value="mid">Mid-range (₹500-₹1000)</option>
+                    <option value="luxury">Luxury (Above ₹1000)</option>
+                </select>
+                <select class="filter-input" id="duration-filter">
+                    <option value="">Any Duration</option>
+                    <option value="day">Day Trip</option>
+                    <option value="weekend">Weekend (2-3 days)</option>
+                    <option value="week">Week Long</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div class="destinations-loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Finding amazing destinations for you...</p>
+    </div>
+
+    <!-- Destinations Grid -->
+    <div class="destinations-grid" id="destinations-grid">
+        <!-- Mumbai -->
+        <div class="destination-card fade-in" data-category="cultural" data-budget="mid" data-duration="weekend">
+            <div class="destination-image">
+                <div class="destination-badge">Popular</div>
+                <div class="destination-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    4.8
+                </div>
+                🏙️
+            </div>
+            <div class="destination-content">
+                <div class="destination-header">
+                    <div>
+                        <h3 class="destination-title">Mumbai</h3>
+                        <p class="destination-subtitle">The City That Never Sleeps</p>
+                    </div>
+                    <div class="destination-price">
+                        <div class="price-from">Starting from</div>
+                        <div class="price-amount">₹299</div>
+                    </div>
+                </div>
+                
+                <p class="destination-description">
+                    From bustling markets to serene coastlines, Mumbai offers contrasts at every corner. Navigate through local trains, buses, and iconic black-yellow taxis.
+                </p>
+                
+                <div class="destination-features">
+                    <span class="feature-tag">Local Trains</span>
+                    <span class="feature-tag">Street Food</span>
+                    <span class="feature-tag">Bollywood</span>
+                    <span class="feature-tag">Gateway of India</span>
+                </div>
+                
+                <div class="destination-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2-3</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+                
+                <div class="destination-actions">
+                    <a href="destination-detail.html?city=mumbai" class="btn-explore">
+                        <i class="fas fa-plane"></i>
+                        Explore Mumbai
+                    </a>
+                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goa -->
+        <div class="destination-card fade-in" data-category="beaches" data-budget="mid" data-duration="weekend">
+            <div class="destination-image">
+                <div class="destination-badge">Trending</div>
+                <div class="destination-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    4.9
+                </div>
+                🏖️
+            </div>
+            <div class="destination-content">
+                <div class="destination-header">
+                    <div>
+                        <h3 class="destination-title">Goa</h3>
+                        <p class="destination-subtitle">Where Time Moves with Tides</p>
+                    </div>
+                    <div class="destination-price">
+                        <div class="price-from">Starting from</div>
+                        <div class="price-amount">₹599</div>
+                    </div>
+                </div>
+                
+                <p class="destination-description">
+                    Sun, sand, and soul - experience Goa beyond beaches with our local transport guides and cultural immersion packages.
+                </p>
+                
+                <div class="destination-features">
+                    <span class="feature-tag">Beaches</span>
+                    <span class="feature-tag">Nightlife</span>
+                    <span class="feature-tag">Water Sports</span>
+                    <span class="feature-tag">Portuguese Heritage</span>
+                </div>
+                
+                <div class="destination-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">80+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3-5</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+                
+                <div class="destination-actions">
+                    <a href="destination-detail.html?city=goa" class="btn-explore">
+                        <i class="fas fa-plane"></i>
+                        Explore Goa
+                    </a>
+                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manali -->
+        <div class="destination-card fade-in" data-category="mountains adventure" data-budget="mid" data-duration="weekend">
+            <div class="destination-image">
+                <div class="destination-badge">Adventure</div>
+                <div class="destination-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    4.7
+                </div>
+                🏔️
+            </div>
+            <div class="destination-content">
+                <div class="destination-header">
+                    <div>
+                        <h3 class="destination-title">Manali</h3>
+                        <p class="destination-subtitle">Adventure in the Himalayas</p>
+                    </div>
+                    <div class="destination-price">
+                        <div class="price-from">Starting from</div>
+                        <div class="price-amount">₹899</div>
+                    </div>
+                </div>
+                
+                <p class="destination-description">
+                    Mountain adventures await in Manali. Scenic bus routes through valleys, rivers, and snow-capped peaks.
+                </p>
+                
+                <div class="destination-features">
+                    <span class="feature-tag">Trekking</span>
+                    <span class="feature-tag">Skiing</span>
+                    <span class="feature-tag">River Rafting</span>
+                    <span class="feature-tag">Valley Views</span>
+                </div>
+                
+                <div class="destination-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">45+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.7</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4-6</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+                
+                <div class="destination-actions">
+                    <a href="destination-detail.html?city=manali" class="btn-explore">
+                        <i class="fas fa-plane"></i>
+                        Explore Manali
+                    </a>
+                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rajasthan -->
+        <div class="destination-card fade-in" data-category="cultural" data-budget="luxury" data-duration="week">
+            <div class="destination-image">
+                <div class="destination-badge">Royal</div>
+                <div class="destination-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    4.6
+                </div>
+                🕌
+            </div>
+            <div class="destination-content">
+                <div class="destination-header">
+                    <div>
+                        <h3 class="destination-title">Rajasthan</h3>
+                        <p class="destination-subtitle">Land of Kings</p>
+                    </div>
+                    <div class="destination-price">
+                        <div class="price-from">Starting from</div>
+                        <div class="price-amount">₹1,299</div>
+                    </div>
+                </div>
+                
+                <p class="destination-description">
+                    Royal heritage, desert safaris, and palatial experiences. Journey through the golden state with luxury and comfort.
+                </p>
+                
+                <div class="destination-features">
+                    <span class="feature-tag">Palaces</span>
+                    <span class="feature-tag">Desert Safari</span>
+                    <span class="feature-tag">Camel Rides</span>
+                    <span class="feature-tag">Folk Culture</span>
+                </div>
+                
+                <div class="destination-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.6</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7-10</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+                
+                <div class="destination-actions">
+                    <a href="destination-detail.html?city=rajasthan" class="btn-explore">
+                        <i class="fas fa-plane"></i>
+                        Explore Rajasthan
+                    </a>
+                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kerala -->
+        <div class="destination-card fade-in" data-category="cultural beaches" data-budget="mid" data-duration="weekend">
+            <div class="destination-image">
+                <div class="destination-badge">Eco-Friendly</div>
+                <div class="destination-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    4.8
+                </div>
+                🌴
+            </div>
+            <div class="destination-content">
+                <div class="destination-header">
+                    <div>
+                        <h3 class="destination-title">Kerala</h3>
+                        <p class="destination-subtitle">God's Own Country</p>
+                    </div>
+                    <div class="destination-price">
+                        <div class="price-from">Starting from</div>
+                        <div class="price-amount">₹999</div>
+                    </div>
+                </div>
+                
+                <p class="destination-description">
+                    Experience the serene backwaters, lush green hills, and pristine beaches of Kerala.
+                </p>
+                
+                <div class="destination-features">
+                    <span class="feature-tag">Backwaters</span>
+                    <span class="feature-tag">Hill Stations</span>
+                    <span class="feature-tag">Beaches</span>
+                    <span class="feature-tag">Ayurveda</span>
+                </div>
+                
+                <div class="destination-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">60+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4-6</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+                
+                <div class="destination-actions">
+                    <a href="destination-detail.html?city=kerala" class="btn-explore">
+                        <i class="fas fa-plane"></i>
+                        Explore Kerala
+                    </a>
+                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>WanderWave</h3>
+                    <p>Discover the most amazing destinations with us. Your perfect travel experience starts here.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Wander City</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> info@wanderwave.com</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for travel inspiration and exclusive offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 WanderWave. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Add fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Initial check
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Filter functionality
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const destinationCards = document.querySelectorAll('.destination-card');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Toggle active class
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show loading
+                    document.getElementById('loading').style.display = 'flex';
+                    
+                    // Simulate loading
+                    setTimeout(() => {
+                        // Filter cards
+                        destinationCards.forEach(card => {
+                            if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                        
+                        // Hide loading
+                        document.getElementById('loading').style.display = 'none';
+                    }, 500);
+                });
+            });
+            
+            // Wishlist functionality
+            window.toggleWishlist = function(button) {
+                button.classList.toggle('active');
+                const icon = button.querySelector('i');
+                if (button.classList.contains('active')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    // Add to wishlist functionality
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    // Remove from wishlist functionality
+                }
+            };
+        });
+    </script>
+
+    <!-- Auth Popup -->
+    <div class="auth-overlay">
+        <div class="auth-popup">
+            <button class="close-auth">&times;</button>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="signup-tab">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </div>
+                <div class="social-login">
+                    <span>Or login with</span>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" id="switch-to-login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+</html>

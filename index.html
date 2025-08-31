@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWave - Ride the Wave of Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">WanderWave</div>
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <label for="mobile-menu-toggle" class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </label>
+        <div class="menu-overlay"></div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="destination.html">Destinations</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-only"><a href="bookings.html">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item active">
+            <i class="fas fa-home"></i>
+            <div class="dock-tooltip">Home</div>
+        </a>
+        <a href="search.html" class="dock-item">
+            <i class="fas fa-search"></i>
+            <div class="dock-tooltip">Search</div>
+        </a>
+        <a href="bookings.html" class="dock-item">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="dock-tooltip">My Bookings</div>
+        </a>
+        <a href="destination.html" class="dock-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <div class="dock-tooltip">Destinations</div>
+        </a>
+        <a href="profile.html" class="dock-item">
+            <i class="fas fa-user"></i>
+            <div class="dock-tooltip">Profile</div>
+        </a>
+        <a href="contact.html" class="dock-item">
+            <i class="fas fa-headset"></i>
+            <div class="dock-tooltip">Support</div>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Journey, Reimagined</h1>
+            <p>Discover eco-friendly routes, hidden gems, and seamless multi-modal travel experiences across India</p>
+            <a href="search.html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Start Your Adventure
+            </a>
+        </div>
+
+        <!-- Quick Search Widget -->
+        <div class="quick-search-widget">
+            <div class="search-tabs">
+                <div class="search-tab active">
+                    <i class="fas fa-bus"></i>
+                    Bus Routes
+                </div>
+                <div class="search-tab">
+                    <i class="fas fa-train"></i>
+                    Train Journeys
+                </div>
+                <div class="search-tab">
+                    <i class="fas fa-car"></i>
+                    Car Rentals
+                </div>
+                <div class="search-tab">
+                    <i class="fas fa-motorcycle"></i>
+                    Local Transport
+                </div>
+                <div class="search-tab">
+                    <i class="fas fa-backpack"></i>
+                    Experience Packages
+                </div>
+            </div>
+
+            <form class="quick-search-form form-fields-bus" action="search.html" method="GET">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>From</label>
+                        <input type="text" name="from" placeholder="Departure City" required>
+                    </div>
+                    <div class="form-group">
+                        <label>To</label>
+                        <input type="text" name="to" placeholder="Destination City" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Departure Date</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Passengers</label>
+                        <select name="passengers">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4+ Passengers</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                        Search Buses
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose WanderWave?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Eco-Smart Routes</h3>
+                    <p>Travel green with our carbon footprint calculator and eco-friendly transport options. Every booking contributes to environmental conservation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-signs"></i>
+                    </div>
+                    <h3>Multi-Modal Journey Planning</h3>
+                    <p>Seamlessly combine buses, trains, and local transport for the perfect journey. One platform, endless possibilities.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Cultural Immersion</h3>
+                    <p>Discover local experiences, hidden gems, and authentic cultural activities along your route. Travel like a local.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Track your vehicle live, get instant updates, and receive notifications about weather, traffic, and route conditions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance, emergency support, and instant help during travel disruptions. We've got you covered.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Driven</h3>
+                    <p>Real reviews, local insights, and community-shared tips to make every journey memorable and authentic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Destinations Preview -->
+    <section class="trending-destinations">
+        <div class="container">
+            <h2 class="section-title">Trending Destinations</h2>
+            <div class="destinations-preview">
+                <div class="destination-card">
+                    <div class="destination-image">🏙️</div>
+                    <div class="destination-info">
+                        <h4>Mumbai</h4>
+                        <p>The City That Never Sleeps</p>
+                        <span class="price">From ₹299</span>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🏖️</div>
+                    <div class="destination-info">
+                        <h4>Goa</h4>
+                        <p>Where Time Moves with Tides</p>
+                        <span class="price">From ₹599</span>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🏔️</div>
+                    <div class="destination-info">
+                        <h4>Manali</h4>
+                        <p>Adventure in the Himalayas</p>
+                        <span class="price">From ₹899</span>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🕌</div>
+                    <div class="destination-info">
+                        <h4>Rajasthan</h4>
+                        <p>Land of Kings</p>
+                        <span class="price">From ₹449</span>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="destinations.html" class="view-all-btn">
+                    View All Destinations
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Updates Section -->
+    <section class="live-updates">
+        <div class="container">
+            <h2 class="section-title">Live Travel Updates</h2>
+            <div class="updates-grid">
+                <div class="update-card">
+                    <div class="update-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="update-content">
+                        <h4>Route Status</h4>
+                        <p>All major highways clear. Normal traffic flow on Mumbai-Pune route.</p>
+                        <span class="update-time">Updated 5 min ago</span>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="update-content">
+                        <h4>Weather Alert</h4>
+                        <p>Pleasant weather in North India. Light rain expected in Kerala.</p>
+                        <span class="update-time">Updated 12 min ago</span>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="update-content">
+                        <h4>Festival Season</h4>
+                        <p>Diwali special packages available. Book early for best prices.</p>
+                        <span class="update-time">Updated 1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Stay Updated with Travel Deals</h3>
+                <p>Get exclusive offers, route updates, and travel tips delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo">WanderWave</div>
+                        <p>Ride the Wave of Adventure</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="destinations.html">Popular Destinations</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="search.html">Book Now</a></li>
+                        <li><a href="contact.html">Customer Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Bus Booking</a></li>
+                        <li><a href="#">Train Booking</a></li>
+                        <li><a href="#">Car Rentals</a></li>
+                        <li><a href="#">Local Transport</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 WanderWave. All rights reserved. Made with ❤️ for travelers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Auth Popup -->
+    <div class="auth-overlay">
+        <div class="auth-popup">
+            <button class="close-auth">&times;</button>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="signup-tab">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </div>
+                <div class="social-login">
+                    <span>Or login with</span>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" id="switch-to-login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+</html>

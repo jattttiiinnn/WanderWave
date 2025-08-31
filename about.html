@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WanderWave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .story-section, .mission-section, .values-section, .team-section, .milestones-section {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--neutral-light);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 30px 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-main), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .story-content {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+        }
+
+        .mission-box {
+            text-align: center;
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-style: italic;
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .mission-box::before, .mission-box::after {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            color: var(--accent-cyan);
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .mission-box::before {
+            top: 10px;
+            left: 20px;
+        }
+
+        .mission-box::after {
+            bottom: -20px;
+            right: 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-card i {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--neutral-light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .member-info {
+            padding: 25px;
+        }
+
+        .member-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--neutral-light);
+        }
+
+        .member-role {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .milestones {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .milestone {
+            display: flex;
+            gap: 20px;
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .milestone:hover {
+            transform: translateX(10px);
+            border-color: var(--accent-cyan);
+        }
+
+        .milestone-year {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            min-width: 100px;
+        }
+
+        .milestone-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--neutral-light);
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mission-box {
+                font-size: 1.1rem;
+                padding: 30px 20px;
+            }
+            
+            .story-content {
+                padding: 25px;
+            }
+            
+            .milestone {
+                flex-direction: column;
+            }
+            
+            .milestone-year {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">WanderWave</div>
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <label for="mobile-menu-toggle" class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </label>
+        <div class="menu-overlay"></div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destinations</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-only"><a href="bookings.html">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h1>Our Story</h1>
+        <div class="container">
+            <div class="story-content">
+                <h2>Born from a Passion for Meaningful Travel</h2>
+                <p>WanderWave started when our founders realized that travel booking was just about getting from Point A to Point B. We believed travel should be about the journey, the people you meet, the cultures you experience, and the positive impact you leave behind.</p>
+                <p>Founded in 2024, we're revolutionizing how people discover, book, and experience travel across India. We're not just a booking platform - we're your travel companions, committed to making every journey memorable, sustainable, and authentically local.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="mission-box">
+            To make travel accessible, sustainable, and culturally enriching while supporting local communities and preserving the environment.
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Sustainability First</h3>
+                <p>Every booking contributes to environmental conservation through our partnerships with eco-friendly initiatives and carbon offset programs.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Local Impact</h3>
+                <p>We prioritize partnerships with local businesses and communities to ensure tourism benefits those who welcome us into their homes and towns.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-globe-asia"></i>
+                <h3>Cultural Authenticity</h3>
+                <p>We believe in real experiences, not tourist traps. Our local experts curate authentic encounters that respect and celebrate local traditions.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Innovation</h3>
+                <p>We use technology to enhance, not replace, human connections, making travel planning seamless while keeping the personal touch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 class="section-title">Meet Our Founders</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://source.unsplash.com/600x600/?portrait,entrepreneur,1');"></div>
+                <div class="member-info">
+                    <h3>Alex Chen</h3>
+                    <span class="member-role">CEO & Co-Founder</span>
+                    <p>Former backpacker turned entrepreneur, Alex has traveled to over 50 countries and is passionate about sustainable tourism.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://source.unsplash.com/600x600/?portrait,woman,entrepreneur,1');"></div>
+                <div class="member-info">
+                    <h3>Priya Sharma</h3>
+                    <span class="member-role">COO & Co-Founder</span>
+                    <p>With a background in environmental science, Priya ensures our operations leave minimal footprint while maximizing community impact.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://source.unsplash.com/600x600/?portrait,man,tech,1');"></div>
+                <div class="member-info">
+                    <h3>Rahul Mehta</h3>
+                    <span class="member-role">CTO & Co-Founder</span>
+                    <p>Tech enthusiast who believes in using innovation to solve real-world travel challenges while maintaining human connections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section class="milestones-section">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="milestones">
+            <div class="milestone">
+                <div class="milestone-year">2024</div>
+                <div class="milestone-content">
+                    <h4>WanderWave Founded</h4>
+                    <p>Launched with a mission to transform travel experiences across India.</p>
+                </div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-year">2024</div>
+                <div class="milestone-content">
+                    <h4>10,000 Happy Travelers</h4>
+                    <p>Reached our first major milestone of serving 10,000 satisfied customers.</p>
+                </div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-year">2025</div>
+                <div class="milestone-content">
+                    <h4>Sustainability Award</h4>
+                    <p>Recognized as India's Most Sustainable Travel Startup by Travel+ Magazine.</p>
+                </div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-year">2025</div>
+                <div class="milestone-content">
+                    <h4>50+ Destinations</h4>
+                    <p>Expanded our network to cover 50+ destinations across India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item">
+            <i class="fas fa-home"></i>
+            <div class="dock-tooltip">Home</div>
+        </a>
+        <a href="search.html" class="dock-item">
+            <i class="fas fa-search"></i>
+            <div class="dock-tooltip">Search</div>
+        </a>
+        <a href="bookings.html" class="dock-item">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="dock-tooltip">My Bookings</div>
+        </a>
+        <a href="destination.html" class="dock-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <div class="dock-tooltip">Destinations</div>
+        </a>
+        <a href="profile.html" class="dock-item">
+            <i class="fas fa-user"></i>
+            <div class="dock-tooltip">Profile</div>
+        </a>
+        <a href="contact.html" class="dock-item">
+            <i class="fas fa-headset"></i>
+            <div class="dock-tooltip">Support</div>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+
+    <!-- Auth Popup -->
+    <div class="auth-overlay">
+        <div class="auth-popup">
+            <button class="close-auth">&times;</button>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="signup-tab">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </div>
+                <div class="social-login">
+                    <span>Or login with</span>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" id="switch-to-login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+</html>

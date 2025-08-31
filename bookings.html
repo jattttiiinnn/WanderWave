@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - WanderWave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Bookings Page Specific Styles */
+        .bookings-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        @media (max-width: 768px) {
+            .bookings-container {
+                margin: 80px auto 30px;
+                padding: 0 15px;
+            }
+        }
+
+        .bookings-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .bookings-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--neutral-light);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .bookings-header p {
+            color: var(--neutral-light);
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .bookings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .bookings-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        .booking-card {
+            background: rgba(26, 11, 61, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (max-width: 480px) {
+            .booking-card {
+                padding: 15px;
+                border-radius: 12px;
+            }
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .booking-id {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            background: rgba(0, 212, 170, 0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .booking-status {
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 20px;
+        }
+
+        .status-confirmed {
+            background: rgba(81, 207, 102, 0.1);
+            color: #51cf66;
+        }
+
+        .status-pending {
+            background: rgba(255, 214, 0, 0.1);
+            color: #ffd600;
+        }
+
+        .status-cancelled {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+
+        .booking-destination {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--neutral-light);
+        }
+
+        .booking-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--neutral-light);
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+
+        .booking-date i {
+            color: var(--accent-cyan);
+            width: 20px;
+            text-align: center;
+        }
+
+        .booking-details {
+            margin: 20px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .detail-label {
+            color: var(--neutral-light);
+            opacity: 0.7;
+        }
+
+        .detail-value {
+            color: var(--neutral-light);
+            font-weight: 500;
+        }
+
+        .booking-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 480px) {
+            .booking-actions {
+                gap: 8px;
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+            
+            .booking-actions .btn {
+                flex: 1 1 100%;
+                margin: 0 !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .booking-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .booking-actions .btn {
+                width: 100%;
+                margin: 0 !important;
+                text-align: center;
+            }
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-outline:active {
+            background: rgba(0, 212, 170, 0.1);
+            transform: scale(0.98);
+        }
+
+        .btn-danger {
+            background: transparent;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .no-bookings {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .no-bookings i {
+            font-size: 4rem;
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .no-bookings h3 {
+            color: var(--neutral-light);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .no-bookings p {
+            color: var(--neutral-light);
+            opacity: 0.7;
+            margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-explore {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .bookings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">WanderWave</div>
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <label for="mobile-menu-toggle" class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </label>
+        <div class="menu-overlay"></div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destinations</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-only"><a href="bookings.html" class="active">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bookings-container">
+        <div class="bookings-header">
+            <h1>My Bookings</h1>
+            <p>View and manage your upcoming and past trips</p>
+        </div>
+
+        <div class="bookings-grid">
+            <!-- Booking Card 1 -->
+            <div class="booking-card">
+                <div class="booking-header">
+                    <span class="booking-id">#WV123456</span>
+                    <span class="booking-status status-confirmed">Confirmed</span>
+                </div>
+                <h3 class="booking-destination">Bali, Indonesia</h3>
+                <div class="booking-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Jun 15 - Jun 25, 2023</span>
+                </div>
+                <div class="booking-date">
+                    <i class="fas fa-users"></i>
+                    <span>2 Adults, 1 Room</span>
+                </div>
+                <div class="booking-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Check-in:</span>
+                        <span class="detail-value">Jun 15, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Check-out:</span>
+                        <span class="detail-value">Jun 25, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Guests:</span>
+                        <span class="detail-value">2 Adults</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Amount:</span>
+                        <span class="detail-value">$1,250.00</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary">View Details</button>
+                    <button class="btn btn-outline">Modify</button>
+                </div>
+            </div>
+
+            <!-- Booking Card 2 -->
+            <div class="booking-card">
+                <div class="booking-header">
+                    <span class="booking-id">#WV789012</span>
+                    <span class="booking-status status-pending">Pending</span>
+                </div>
+                <h3 class="booking-destination">Paris, France</h3>
+                <div class="booking-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Sep 5 - Sep 15, 2023</span>
+                </div>
+                <div class="booking-date">
+                    <i class="fas fa-users"></i>
+                    <span>2 Adults, 1 Room</span>
+                </div>
+                <div class="booking-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Check-in:</span>
+                        <span class="detail-value">Sep 5, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Check-out:</span>
+                        <span class="detail-value">Sep 15, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Guests:</span>
+                        <span class="detail-value">2 Adults</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Amount:</span>
+                        <span class="detail-value">$1,850.00</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary">Complete Payment</button>
+                    <button class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Booking Card 3 -->
+            <div class="booking-card">
+                <div class="booking-header">
+                    <span class="booking-id">#WV345678</span>
+                    <span class="booking-status status-cancelled">Cancelled</span>
+                </div>
+                <h3 class="booking-destination">Tokyo, Japan</h3>
+                <div class="booking-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Apr 10 - Apr 20, 2023</span>
+                </div>
+                <div class="booking-date">
+                    <i class="fas fa-users"></i>
+                    <span>2 Adults, 1 Room</span>
+                </div>
+                <div class="booking-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Check-in:</span>
+                        <span class="detail-value">Apr 10, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Check-out:</span>
+                        <span class="detail-value">Apr 20, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Guests:</span>
+                        <span class="detail-value">2 Adults</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Refund Amount:</span>
+                        <span class="detail-value">$1,100.00</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-outline">View Details</button>
+                    <button class="btn btn-primary">Book Again</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item">
+            <i class="fas fa-home"></i>
+            <div class="dock-tooltip">Home</div>
+        </a>
+        <a href="search.html" class="dock-item">
+            <i class="fas fa-search"></i>
+            <div class="dock-tooltip">Search</div>
+        </a>
+        <a href="bookings.html" class="dock-item active">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="dock-tooltip">My Bookings</div>
+        </a>
+        <a href="destination.html" class="dock-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <div class="dock-tooltip">Destinations</div>
+        </a>
+        <a href="profile.html" class="dock-item">
+            <i class="fas fa-user"></i>
+            <div class="dock-tooltip">Profile</div>
+        </a>
+        <a href="contact.html" class="dock-item">
+            <i class="fas fa-headset"></i>
+            <div class="dock-tooltip">Support</div>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>WanderWave</h3>
+                    <p>Ride the wave of adventure and discover your next unforgettable journey with our curated travel experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destination.html">Destinations</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@wanderwave.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for travel tips and exclusive offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 WanderWave. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

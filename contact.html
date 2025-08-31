@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - WanderWave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--neutral-light);
+            opacity: 0.9;
+        }
+
+        .contact-sections {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--neutral-light);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 30px 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-main), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--neutral-light);
+        }
+
+        .contact-card p {
+            color: var(--neutral-light);
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .office-locations {
+            margin-bottom: 80px;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .location-card {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .location-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+        }
+
+        .location-card p {
+            color: var(--neutral-light);
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .faq-section {
+            margin-bottom: 80px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-cyan);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--neutral-light);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 25px 20px;
+            color: var(--neutral-light);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            padding: 40px;
+            background: rgba(26, 11, 61, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--neutral-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 2px rgba(0, 201, 255, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary-main), var(--accent-cyan));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1rem;
+            }
+            
+            .contact-form-container {
+                padding: 25px 20px;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">WanderWave</div>
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <label for="mobile-menu-toggle" class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </label>
+        <div class="menu-overlay"></div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destinations</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="mobile-only"><a href="bookings.html">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>We're here to help and answer any questions you might have. We look forward to hearing from you.</p>
+    </section>
+
+    <div class="contact-sections">
+        <!-- Contact Methods -->
+        <section class="contact-methods">
+            <div class="contact-card">
+                <i class="fas fa-headset"></i>
+                <h3>Customer Support</h3>
+                <p>Available 24/7 to assist with your travel needs and inquiries.</p>
+                <a href="tel:+911234567890">+91 12345 67890</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Business Partnerships</h3>
+                <p>For operators and businesses wanting to join our network.</p>
+                <a href="mailto:partners@wanderwave.com">Contact Us</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-newspaper"></i>
+                <h3>Media Inquiries</h3>
+                <p>Press and collaboration requests from media outlets.</p>
+                <a href="mailto:press@wanderwave.com">Email Us</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-comment-alt"></i>
+                <h3>Feedback</h3>
+                <p>Help us improve your experience with your valuable feedback.</p>
+                <a href="#feedback-form">Share Feedback</a>
+            </div>
+        </section>
+
+        <!-- Office Locations -->
+        <section class="office-locations">
+            <h2 class="section-title">Our Offices</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Headquarters</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Bandra West, Mumbai, Maharashtra 400050</p>
+                    <p><i class="fas fa-phone"></i> +91 22 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> mumbai@wanderwave.com</p>
+                </div>
+                <div class="location-card">
+                    <h3>Regional Offices</h3>
+                    <p><strong>Delhi:</strong> 45 Connaught Place, New Delhi 110001</p>
+                    <p><strong>Bangalore:</strong> 78 MG Road, Bengaluru, Karnataka 560001</p>
+                    <p><strong>Chennai:</strong> 22 Anna Salai, Teynampet, Chennai, Tamil Nadu 600002</p>
+                </div>
+                <div class="location-card">
+                    <h3>Support Centers</h3>
+                    <p>Pan-India coverage with support teams available across major cities including Kolkata, Hyderabad, Pune, and Jaipur.</p>
+                    <p>24/7 support available for all your travel needs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the booking process work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Our booking process is simple and straightforward. Just select your destination, choose your preferred dates, and browse through the available options. Once you've made your selection, you can complete your booking securely online. You'll receive a confirmation email with all the details of your reservation.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the payment and refund policies?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We accept all major credit/debit cards, UPI, and net banking. For cancellations made more than 48 hours before the scheduled departure, a full refund will be processed. Cancellations made within 48 hours are subject to our cancellation policy, which varies by service provider. Please refer to your booking confirmation for specific details.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the current travel guidelines?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Travel guidelines may vary by destination and are subject to change. We recommend checking the latest government advisories and local regulations before your trip. Some destinations may require vaccination certificates or negative test results. Our team stays updated with the latest travel requirements and can assist you with any specific questions.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I do in case of an emergency?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            In case of an emergency during your trip, please contact our 24/7 emergency support line at +91 98765 43210. For medical emergencies, please contact local emergency services first, then inform our team. We recommend keeping a copy of your travel insurance details and important contact numbers with you at all times during your trip.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="feedback-form" class="contact-form">
+            <h2 class="section-title">Send Us a Message</h2>
+            <div class="contact-form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item">
+            <i class="fas fa-home"></i>
+            <div class="dock-tooltip">Home</div>
+        </a>
+        <a href="search.html" class="dock-item">
+            <i class="fas fa-search"></i>
+            <div class="dock-tooltip">Search</div>
+        </a>
+        <a href="bookings.html" class="dock-item">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="dock-tooltip">My Bookings</div>
+        </a>
+        <a href="destination.html" class="dock-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <div class="dock-tooltip">Destinations</div>
+        </a>
+        <a href="profile.html" class="dock-item">
+            <i class="fas fa-user"></i>
+            <div class="dock-tooltip">Profile</div>
+        </a>
+        <a href="contact.html" class="dock-item">
+            <i class="fas fa-headset"></i>
+            <div class="dock-tooltip">Support</div>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically send the form data to a server
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    </script>
+
+    <!-- Auth Popup -->
+    <div class="auth-overlay">
+        <div class="auth-popup">
+            <button class="close-auth">&times;</button>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="signup-tab">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </div>
+                <div class="social-login">
+                    <span>Or login with</span>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" id="switch-to-login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+</html>
